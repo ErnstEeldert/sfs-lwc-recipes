@@ -1,24 +1,24 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement } from 'lwc';
 import getRecentWorkOrders from '@salesforce/apex/ImperativeApexController.getRecentWorkOrders';
 
 export default class ImperativeApex extends LightningElement {
 
-    @track workOrders;
-    @track error;
+    workOrders;
+    error;
 
     connectedCallback() {
         this.doLoad();
     }
 
     doLoad() {
-        this.workOrders = [];
-        this.error = null;
         console.log('loading data through imperative APEX');
         getRecentWorkOrders()
         .then(result => {
             this.workOrders = result;
+            this.error = undefined;
         })
         .catch(error => {
+            this.workOrders = undefined;
             this.error = JSON.stringify(error);
         });
     }
