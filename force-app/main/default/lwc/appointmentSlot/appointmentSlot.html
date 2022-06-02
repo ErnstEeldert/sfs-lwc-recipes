@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-grid slds-grid_align-spread slds-nowrap slot-row" onclick={onSlotSelected}>
+        <div class="slds-col slds-size_2-of-3 slds-var-p-around_small">
+            <lightning-formatted-date-time value={appointmentSlot.start} hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
+            <span> - </span>
+            <lightning-formatted-date-time value={appointmentSlot.finish} hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
+        </div>
+        <div class="slds-col slds-size_1-of-3 slds-var-p-around_small">
+            <template if:true={isIdealGrade}>
+                <lightning-badge label='Ideal' class="ideal-grade-badge"></lightning-badge>
+            </template>
+            <template if:true={isRecommendedGrade}>
+                <lightning-badge label='Recommended' class="recommended-grade-badge"></lightning-badge>
+            </template>
+        </div>
+    </div>
+</template>

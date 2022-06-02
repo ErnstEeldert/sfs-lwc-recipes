@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-grid slds-grid_vertical slds-grid_align-spread">
+        <div class="slds-var-p-around_medium">
+            <h1>Please select a Service Appointment!</h1>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-var-p-around_small">
+            <template for:each={serviceAppointments} for:item="serviceAppointment">
+                <c-service-appointment-card key={serviceAppointment.Id} data-id={serviceAppointment.Id} onclick={handleSelect} service-appointment={serviceAppointment}></c-service-appointment-card>
+            </template>
+        </div>
+    </div>
+    <!-- <div>
+        <lightning-button label="Next" onclick={onNext}></lightning-button>
+    </div> -->
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-var-p-around_medium">
+        <h1>Please select a time slot!</h1>
+    </div>
+        <template for:each={appointmentSlots} for:item="appointmentDate">
+            <div key={appointmentDate.value} class="slds-grid slds-grid_vertical slds-var-p-around_small">
+                <div class="slds-col slds-var-p-around_small slds-border_bottom slot-list-header">
+                    <lightning-formatted-date-time value={appointmentDate.value} month="short" day="2-digit" weekday="long"></lightning-formatted-date-time>
+                </div>
+                <template for:each={appointmentDate.slots} for:item="appointmentSlot">
+                    <div key={appointmentSlot.uuid} class="slds-col slds-border_bottom">
+                        <c-appointment-slot key={appointmentSlot.uuid} appointment-slot={appointmentSlot}></c-appointment-slot>
+                    </div>
+                </template>
+            </div>
+        </template>
+</template>

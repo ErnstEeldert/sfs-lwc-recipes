@@ -1,0 +1,42 @@
+<template>
+    <div class="container">
+        <div class="progress-indicator slds-nowrap slds-var-p-around_small">
+            <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                <lightning-progress-step
+                    label="Select Service Appoinment"
+                    value="s1"
+                ></lightning-progress-step>
+                <lightning-progress-step
+                    label="Select Slot"
+                    value="s2"
+                ></lightning-progress-step>
+                <lightning-progress-step
+                    label="Boom"
+                    value="s3"
+                ></lightning-progress-step>
+            </lightning-progress-indicator>
+        </div>
+        <div class="slds-nowrap">
+            <template if:true={serviceAppointmentSelectorPage}>
+                <c-service-appointment-selector-page work-order-id={recordId} onappointmentselected={handleAppointmentSelected}></c-service-appointment-selector-page>
+            </template>
+            <template if:true={appointmentSlotSelectorPage}>
+                <c-appointment-slot-list service-appointment-id={selectedServiceAppointment} onslotselected={handleSlotSelected}></c-appointment-slot-list>
+            </template>
+            <template if:true={appointmentBookedPage}>
+                <div class="slds-grid slds-grid_vertical slds-grid_vertical-align-center slds-grid_align-center">
+                    <div style="height: 20rem;"></div>
+                    <div class="slds-col slds-var-p-around_small">
+                        <lightning-icon icon-name="utility:success" alternative-text="Success!" title="The appointment has been booked!" variant="success" size="large"></lightning-icon>
+                    </div>
+                    <div class="slds-col slds-var-p-around_small">
+                      <span>The appointment has been successfully booked!</span>
+                    </div>
+                </div>
+            </template> 
+        </div>
+        <template if:true={showConfetti}>
+            <div class="confetti"><c-confetti></c-confetti></div>
+        </template>
+    </div>
+</template>

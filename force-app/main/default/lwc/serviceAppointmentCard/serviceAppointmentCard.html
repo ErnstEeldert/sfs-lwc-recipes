@@ -1,0 +1,13 @@
+<template>
+    <lightning-tile label={serviceAppointment.AppointmentNumber} type="media" class="slds-var-p-around_small">
+        <lightning-icon slot="media" icon-name="standard:service_appointment"></lightning-icon>
+        <dl class="slds-list_horizontal slds-wrap">
+            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Status</dt>
+            <dd class="slds-item_detail slds-truncate" title="Description for first label">{serviceAppointment.Status}</dd>
+            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Earliest Start Date</dt>
+            <dd class="slds-item_detail slds-truncate" title="Second description"><lightning-formatted-date-time value={serviceAppointment.EarliestStartTime} month="short" day="2-digit" weekday="long"></lightning-formatted-date-time></dd>
+            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Due Date</dt>
+            <dd class="slds-item_detail slds-truncate" title="Second description"><lightning-formatted-date-time value={serviceAppointment.DueDate} month="short" day="2-digit" weekday="long"></lightning-formatted-date-time></dd>
+        </dl>
+    </lightning-tile>
+</template>
