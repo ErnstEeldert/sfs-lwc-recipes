@@ -1,4 +1,5 @@
-import { LightningElement, api, wire } from 'lwc';
+import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
 const TEST_SA = '08pB0000000P9VxIAK';
 
@@ -6,7 +7,7 @@ const STEP_SERVICE_APPOINTMENT_SELECTOR = 's1';
 const STEP_APPOINTMENT_SLOT_SELECTOR = 's2';
 const STEP_APPOINTMENT_BOOKED = 's3';
 
-export default class BookAppointment extends LightningElement {
+export default class BookAppointment extends NavigationMixin(LightningElement) {
 
     @api recordId = '0WOB0000000NRaKOAW';
 
@@ -43,9 +44,26 @@ export default class BookAppointment extends LightningElement {
         this.showConfetti = true;
     }
 
-    allDone(event) {
-        console.log('All done!');
-        this.currentStep = 'AllDone';
+    stopConfetti(event) {
+        this.showConfetti = false;
+    }
+
+    openServiceAppointment(event) {
+        this[NavigationMixin.Navigate]({
+            "type": "standard__webPage",
+            "attributes": {
+                "url": `com.salesforce.fieldservice://v1/sObject/${this.selectedServiceAppointment}/details`
+            }
+        });
+    }
+
+    dismiss(event) {
+        this[NavigationMixin.Navigate]({
+            "type": "standard__webPage",
+            "attributes": {
+                "url": `com.salesforce.fieldservice://v1/sObject/${this.recordId}`
+            }
+        });
     }
 
 }
