@@ -32,11 +32,15 @@
                     <div class="slds-col slds-var-p-around_small">
                       <span>The appointment has been successfully booked!</span>
                     </div>
+                    <div class="slds-col">
+                        <lightning-button class="slds-var-p-around_small" style="z-index: 200" onclick={openServiceAppointment} variant="neutral" label="Open"></lightning-button>
+                        <lightning-button class="slds-var-p-around_small" onclick={dismiss} variant="neutral" label="Dismiss"></lightning-button>
+                    </div>
                 </div>
             </template> 
         </div>
         <template if:true={showConfetti}>
-            <div class="confetti"><c-confetti></c-confetti></div>
+            <div onclick={stopConfetti} class="confetti"><c-confetti></c-confetti></div>
         </template>
     </div>
 </template>
